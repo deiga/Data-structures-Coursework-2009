@@ -1,0 +1,50 @@
+Määrittely
+
+Adaptiivinen huffman pakkausohjelma
+
+Algoritmi: Adaptiivinen Huffman-koodaus
+Tietorakenne: Puu-rakenne, tavallinen binääripuu tuntuu soveltuvan hyvin tarkoitukseen.
+Syöte: Ohjelmalle annettava syöte on tiedosto( tai tekstinpätkä),
+	tiedosto katsoo merkki kerrallaan, onko kyseessä selkokileinen tiedosto vaiko bittiä.
+	Tapauksesta riippuen tiedosto pakataan tai puretaan.
+	
+Haluttu aika- ja tilavaativuus: Aikavaativuus tulee olemaan O(n) sillä rakenne ei ole tasapainoitettu ja tilavaativuus on samaa luokkaa.
+
+Lehtiä 257, koska NYA. OK
+Ei UTF-8, suoraan luku bittijonona. OK
+Huffman-puu on täysi. OK
+Erilinnen taulukko, jossa bittijonon mukaan indeksointi, hakuoperaatiot vakioaikaseksi. OK
+Encode ja decode rakentaa puutaa samanlailla, OK
+uusille kirjaimille kirjoitetaan bittiesitys "selkokielisenä".
+
+Ota selvää bittioperaatioista <<, &, |
+
+Ohjelman tulee toimia seuraavasti:
+
+
+struct node {
+	node* parent;
+	node* left-child;
+	node* right-child;
+	int weight;
+	int index;
+};
+struct BTree {
+	node* root;
+	
+	node** tbl = new node*[257]; 
+};
+
+koodaus:
+- alusta tietorakenne
+- lue kirjain kerralla syötettä, kunnes loppuu
+	- koodaa kirjain
+	- päivitä rakennetta
+	
+purku:
+- alusta tietorakenne
+- lue bitti kerralla syötettä, kunnes loppuu
+	- pura koodaus
+	- päivitä rakennetta 
+
+Ohjelman tulee toimia UTF-8 kirjaimille

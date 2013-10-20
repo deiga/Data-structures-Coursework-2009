@@ -1,0 +1,68 @@
+11.03.
+	- 2h työn alustava määrittely, työn sisällön tutkiminen
+	
+13.03.
+	- 2h algoritmien erillaisuuksien tuktiminen, sopivan rakenteen miettiminen
+	
+15.03.
+	- 5h sopivan rakenteen määritteleminen, määrittelydokkarin kirjoittaminen.
+---------------
+19.03.
+	- 1h määrittelyn täsmentämistä, tietorakenteen toteuttamista.
+
+22.03.
+	- 2h Määrittelyn viimeisteleminen, tietorakenteen toteuttamista.
+---------------
+24.03.
+	- 3h tietorakenteen toteuttamista.
+	
+26.03.
+	- 2h tietorakenteen toteuttamista.
+
+27.03.
+	- 2h tietorakenteen toteuttamista, shell-skriptaus
+-----------------
+01.04.
+	- 4h tietorakenteen toteuttamista
+
+04.04.
+	- 4h tietorakenteen toteuttamista
+
+05.04.
+	- 4h tietorakenteen toteuttamista
+
+06.04.
+	- 1h tietorakenteen toteuttamista
+-----------------
+07.04.
+	- 2h tietorakenteen tulostus, uusien kirjainten syöttö rakenteeseen loppuun.
+	
+09.04.
+	- 1h insert-funktion korjaus, noden tulostusoperaatio
+
+12.04.
+	- 2h tietorakenteen toteuttamista
+
+14.04.
+	- 3h FGK:n sisar-ehdon tarkistukset ja vaihdot.
+	
+15.04.
+	- 5h FGK:n sisar-ehdon tarkistukset ja vaihdot.
+	
+17.04.
+	- 4h FGK:n sisar-ehdot valmiiksi. Kaikkien merkkien luku tiedostosta.
+
+19.04.
+	- 2h
+
+21.04.
+	- 2h
+	
+22.04.
+	- 12h Tietojen tulostus tiedostoon, tiedoston purku.
+	
+23.04.
+	- 9h tiedoston purku.
+	
+24.04.
+	- 8h tiedoston purku, dokumentointi.

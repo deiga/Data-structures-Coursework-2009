@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper,draft]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[finnish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\usepackage{geometry}
+\geometry{a4paper,left=30mm,right=30mm,top=45mm,bottom=25mm}
+
+\author{Timo Sand}
+\title{Adaptiivnen Huffman - Dokumentaatio}
+
+\begin{document}
+	
+	
+	\pagestyle{headings}
+	\input{./titlepage.tex}
+	\tableofcontents
+	\thispagestyle{empty}
+	\newpage
+	\setcounter{page}{1}
+	
+	\section{Aiheen määrittely} % (fold)
+	\label{sec:aiheen_maarittely}
+	
+	Harjoitustyön aiheena on tehdä ohjelma, jokaa pystyy pakkaamaan ja purkamaan 
+	esim. tekstitiedoston. Tähän tarkoitukseen käytetään “Adaptiivista Huffman” -koodausta. 
+	Huffman -koodauksessa pakattavaa dataa käsitellään yksi merkki kerrallaan, eli luetaan 
+	merkit bittijonona. Kukin merkki koodataan bittijonoksi, joka on sitä lyhyempi, mitä 
+	useammin merkki esiintyy datassa. Adaptiivisessa Huffman-koodauksessa luodaan 
+	binääripuu ns. “lennosta”, eli jokainen luettu merkki päivittää puuta ja täten merkkejen 
+	bittijonoja. Purku tapahtuu samassa järjestyksessä, eli luetaan bittijono ja käännetään se merkiksi, joka lisätään puuhun. 
+	Kun uusi merkki luetaan ensimmäistä kertaa puuhun, niin sen desimaaliesitys kirjoitetaan kokonaisena bittijonona 
+	tiedostoon, jotta siitä pystytään rakentamaan puuta.
+	\\\\
+	Käytettyjen työtuntien määrä: n. 80-85
+	
+	% section aiheen_määrittely (end)
+	
+	\section{Käyttöohje} % (fold)
+	\label{sec:kayttoohje}
+	
+	Ohjelma käynnistetään komennolla huffman.sh. Ilman parametrejä se tulostaa ohjeet käyttäjälle. 
+	Parametrillä \emph{-d} ohjelma ajetaan gdb:ssä ja tiedostopolku paramaterinä käynnistää itse ohjelman.
+	
+	% section käyttöohje (end)
+	
+	\section{Algoritmit ja tietorakenteet} % (fold)
+	\label{sec:algoritmit_ja_tietorakenteet}
+	
+		\subsection{Huffman-puu} % (fold)
+		\label{sub:huffman_puu}
+		
+			Huffman-puu on binääripuu. Huffman-puussa on solmuja \( 2n-1 \), joten, kun oletetaan 
+			että käytetään ainoastaan ASCII merkkejä, niin voidaan sanoa, kun lehtiä on 257, 
+			että solmuja on maksimissaan 513. Huffmann-puu on aina täysi, 
+			elikkä jokaisella solmulla on 0 tai 2 lasta. Lehtien määrä siis merkkien desimaaliesityksen 
+			mukaan 0-255, sekä NYA-solmu, joka siis kuvastaa ei vielä koodattuja merkkejä.
+			
+			Binääripuun lisäksi käytetään kahta taulukkoa, toisessa on suorat viitteet puun alkioihin, täten kaikki 
+			puuhun liittyvät operaatiot tulevat vakioaikaiseksi ja toisessa taulukossa on kaikki puun solmujen painot. 
+			Ensimmäinen indeksoidaan alkioitten merkin bittiesityksen mukaan ja toinen solmuje indeksin mukaan. 
+			
+		
+		% subsection huffman_puu (end)
+		\subsection{FGK-algoritmi} % (fold)
+		\label{sub:fgk_algoritmi}
+			
+			Algoritmi FGK on kolmen miehen kehittämä algoritmi: Faller, Gallager ja Knuth. Algoritmin pohjana on solmujen sisar-ehto.
+			Binääripuun solmuilla, jossa ei ole negatiivisiä painoarvoja, on sisar-ehto voimassa, jos jokaisella solmulla on sisar 
+			ja jos solmut voidaan numeroida nousevassa järjestyksessä, jossa jokainen solmu on sen sisar-solmun vieressä. 
+			Myöskin solmun vanhempi on koreammalla numerojärjestyksessä.
+			
+			Algoritmin toimintaperiaate on seuraavanlainen. Niin pakkaus kun purku rakentaa syötteenä annetusta tiedostosta huffman-puun samalla tavalla.
+			Jokaista merkkiä kohden lähetetään koodijono puuhun, joka sitten päivitetään.
+		
+		% subsection fgk_algoritmi (end)
+	
+	% section algoritmit_ja_tietorakenteet (end)
+	
+	\section{Testaus} % (fold)
+	\label{sec:testaus}
+	
+		Ohjelman pakkaamista on testattu syötteillä: lorem.txt ja ly-ebook.txt
+		Ohjelma purkua on testattu syötteilä: lorem.bin ja ly-ebook.bin
+		Kummatkin testisyötteet ovat mukana. Kaikilla testeillä tähän asti ohjelma suoriutuu. 
+		Ohjelmaa on myös testattu intensiivisesti toteutuksen aikana.
+	
+	% section testaus (end)
+	
+	\section{Toteutuksen puutteet} % (fold)
+	\label{sec:toteutuksen_puutteet}
+	
+	Toteutus ei tällä hetkellä osaa kirjoittaa bittijonoja, joten pakkaamisen sijaan, se tekee alkuperäisistä tiedostoista isompia.
+	Purun yhteydessä ei osata käsitellä tiedoston lopussa olevia roskabittejä, joten tiedoston loppuun saatetaan kirjoittaa "roskaa".
+	
+	% section toteutuksen_puutteet (end)
+	
+	\begin{thebibliography}{99}
+		\bibitem{applet} \emph{http://www.cs.sfu.ca/CC/365/li/squeeze/AdaptiveHuff.html} - Java appletti huffmannin toiminnan visualisoimiseksi
+		\bibitem{duke} \emph{http://www.cs.duke.edu/csed/curious/compression/adaptivehuff.html} - Sivusto, jossa hyvin selitetty ja havainnollistavat kaaviot.
+	\end{thebibliography}
+	
+\end{document}
